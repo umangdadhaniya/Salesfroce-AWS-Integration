@@ -1,0 +1,11 @@
+String fileNameToDelete = 'Dog_3.jpg';
+
+HttpRequest request = new HttpRequest();
+request.setMethod('DELETE');
+request.setEndpoint('callout:AWS_S3/' + fileNameToDelete);
+
+Http http = new Http();
+HttpResponse res = http.send(request);
+
+//Checkpoint
+Assert.areEqual(204,res.getStatusCode());
