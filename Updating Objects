@@ -1,0 +1,13 @@
+String fileNameToUpdate = 'BytesInTheCloud.txt';
+String fileNewContent = 'Data update complete! Your bytes are now even more awesome.';
+
+HttpRequest request = new HttpRequest();
+request.setMethod('PUT');
+request.setBody(fileNewContent);
+request.setEndpoint('callout:AWS_S3/' + fileNameToUpdate);
+
+Http http = new Http();
+HttpResponse res = http.send(request);
+
+//Checkpoint
+Assert.areEqual(200,res.getStatusCode());
