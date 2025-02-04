@@ -1,0 +1,13 @@
+String fileNameToCreate = 'BytesInTheCloud.txt';
+String fileContent = 'Greetings from the cloud! Your data is safe and sound in S3.';
+
+HttpRequest request = new HttpRequest();
+request.setMethod('PUT');
+request.setBody(fileContent);
+request.setEndpoint('callout:AWS_S3/' + fileNameToCreate);
+
+Http http = new Http();
+HttpResponse res = http.send(request);
+
+//Checkpoint
+Assert.areEqual(200,res.getStatusCode());
